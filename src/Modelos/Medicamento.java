@@ -7,6 +7,7 @@ package Modelos;
  */
 public class Medicamento {
     private int codigo;
+    private int cantidad;
     private String nombre;
     private String descripcion;
     private String concentracion;
@@ -59,6 +60,13 @@ public class Medicamento {
 
     public void setLaboratorio(String laboratorio) {
         this.laboratorio = laboratorio;
+    }
+     public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
     }
     
 }

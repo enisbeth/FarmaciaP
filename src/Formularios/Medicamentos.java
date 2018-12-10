@@ -25,6 +25,7 @@ public class Medicamentos extends javax.swing.JFrame {
     void Agregar(){
         Medicamento m = new Medicamento();
         m.setCodigo(Integer.valueOf(txtCodigo.getText()));
+        m.setCantidad(Integer.valueOf(this.txtCantidad.getText()));
         m.setNombre(this.txtNombre.getText());
         m.setLaboratorio(this.txtLaboratorio.getText());
         m.setPresentacion(this.cmPresentacion.getSelectedItem().toString());
@@ -38,6 +39,7 @@ public class Medicamentos extends javax.swing.JFrame {
         
         model.addColumn("Codigo");
         model.addColumn("Nombre");
+        model.addColumn("Cantidad");
         model.addColumn("Laboratorio");
         model.addColumn("Descripcion");
         model.addColumn("Concentracion");
@@ -49,6 +51,7 @@ public class Medicamentos extends javax.swing.JFrame {
         
         model.addColumn("Codigo");
         model.addColumn("Nombre");
+        model.addColumn("Cantidad");
         model.addColumn("Laboratorio");
         model.addColumn("Descripcion");
         model.addColumn("Concentracion");
@@ -57,10 +60,11 @@ public class Medicamentos extends javax.swing.JFrame {
         for(int i = 0 ; i < medicamento.size(); i++){
             Fila[0] = medicamento.get(i).getCodigo();
             Fila[1] = medicamento.get(i).getNombre();
-            Fila[2] = medicamento.get(i).getLaboratorio();
-            Fila[3] = medicamento.get(i).getDescripcion();
-            Fila[4] = medicamento.get(i).getConcentracion();
-            Fila[5] = medicamento.get(i).getPresentacion();
+            Fila[2] = medicamento.get(i).getCantidad();
+            Fila[3] = medicamento.get(i).getLaboratorio();
+            Fila[4] = medicamento.get(i).getDescripcion();
+            Fila[5] = medicamento.get(i).getConcentracion();
+            Fila[6] = medicamento.get(i).getPresentacion();
             model.addRow(Fila);
         }
         this.jTable1.setModel(model);
@@ -91,6 +95,8 @@ public class Medicamentos extends javax.swing.JFrame {
         txtConcentracion = new javax.swing.JTextField();
         cmPresentacion = new javax.swing.JComboBox<>();
         btnAgregar = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        txtCantidad = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -100,6 +106,7 @@ public class Medicamentos extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         jMenu1.setText("jMenu1");
 
@@ -132,6 +139,8 @@ public class Medicamentos extends javax.swing.JFrame {
             }
         });
 
+        jLabel9.setText("Cantidad:");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -152,11 +161,13 @@ public class Medicamentos extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 126, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtConcentracion, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(txtCantidad, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(btnAgregar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
                         .addComponent(cmPresentacion, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(176, 176, 176))
@@ -176,15 +187,17 @@ public class Medicamentos extends javax.swing.JFrame {
                     .addComponent(jLabel6)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmPresentacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
+                .addGap(22, 22, 22)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtLaboratorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAgregar))
-                .addGap(22, 22, 22)
+                    .addComponent(jLabel9)
+                    .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAgregar))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
@@ -240,7 +253,16 @@ public class Medicamentos extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel8.setText("Control de Inventario");
 
-        jMenu3.setText("Factura");
+        jMenu3.setText("Opciones");
+
+        jMenuItem1.setText("Facturar");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem1);
+
         jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
@@ -283,6 +305,12 @@ public class Medicamentos extends javax.swing.JFrame {
         Agregar();
         ActualizarTabla();
     }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        Factura f = new Factura(this.medicamento);
+        f.TProductos();
+        f.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -330,9 +358,11 @@ public class Medicamentos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -340,6 +370,7 @@ public class Medicamentos extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField txtBuscar;
+    private javax.swing.JTextField txtCantidad;
     private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtConcentracion;
     private javax.swing.JTextArea txtDescripcion;
