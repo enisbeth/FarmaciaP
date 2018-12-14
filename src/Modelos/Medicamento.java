@@ -13,6 +13,15 @@ public class Medicamento {
     private String concentracion;
     private String presentacion;
     private String laboratorio;
+    private double precio;
+    
+    public Double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(Double precio) {
+        this.precio = precio;
+    }
 
     public int getCodigo() {
         return codigo;
