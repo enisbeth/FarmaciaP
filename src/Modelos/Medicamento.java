@@ -7,11 +7,21 @@ package Modelos;
  */
 public class Medicamento {
     private int codigo;
+    private int cantidad;
     private String nombre;
     private String descripcion;
     private String concentracion;
     private String presentacion;
     private String laboratorio;
+    private double precio;
+    
+    public Double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(Double precio) {
+        this.precio = precio;
+    }
 
     public int getCodigo() {
         return codigo;
@@ -59,6 +69,13 @@ public class Medicamento {
 
     public void setLaboratorio(String laboratorio) {
         this.laboratorio = laboratorio;
+    }
+     public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
     }
     
 }
